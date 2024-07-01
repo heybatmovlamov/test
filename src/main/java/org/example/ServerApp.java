@@ -8,7 +8,9 @@ public class ServerApp {
     public static void main(String[] args) throws Exception {
 
         Server server = new Server(9000);
+
         ServletContextHandler handler = new ServletContextHandler();
+
         handler.addServlet(new ServletHolder(new HomeServlet()), "/");
         handler.addServlet(new ServletHolder(new MServlet()), "/m");
         handler.addServlet(new ServletHolder(new TestServlet()), "/test");
