@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 public class MServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         String name = req.getParameter("name");
