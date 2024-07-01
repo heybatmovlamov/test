@@ -19,12 +19,9 @@ public class MServlet extends HttpServlet {
 
         try (OutputStream os = resp.getOutputStream()) {
             System.out.println("GET method called -> " + LocalDateTime.now());
-            String responseMessage;
-            if (name != null && surname != null) {
-                responseMessage = "Hello, " + name + " " + surname + "!";
-            } else {
-                responseMessage = "Please provide both name and surname.";
-            }
+            String responseMessage = (name != null && surname != null)
+                    ? "Hello, " + name + " " + surname + "!"
+                    : "Please provide both name and surname.";
             os.write(responseMessage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
