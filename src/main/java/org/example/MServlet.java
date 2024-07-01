@@ -17,13 +17,15 @@ public class MServlet extends HttpServlet {
 
         resp.setContentType("text/plain");
 
-        try (PrintWriter pw = resp.getWriter()) {
+        try (OutputStream os = resp.getOutputStream()) {
             System.out.println("GET method called -> " + LocalDateTime.now());
+            String responseMessage;
             if (name != null && surname != null) {
-                pw.write("Hello, " + name + " " + surname + "!");
+                responseMessage = "Hello, " + name + " " + surname + "!";
             } else {
-                pw.write("Please provide both name and surname.");
+                responseMessage = "Please provide both name and surname.";
             }
+            os.write(responseMessage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
