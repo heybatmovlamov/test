@@ -12,9 +12,15 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("text/plain");
+        String name = req.getParameter("name");
+
         try (PrintWriter pw = resp.getWriter()) {
             System.out.println("GET method called -> " + LocalDateTime.now());
-            pw.write("Hello, World!");
+            if ("Hello".equalsIgnoreCase(name)) {
+                pw.write("Hello,"+ name +"!");
+            } else {
+                pw.write("Hello, World!");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
